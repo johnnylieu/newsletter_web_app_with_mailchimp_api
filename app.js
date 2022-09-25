@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const request = require('request');
 const https = require('https');
-// const confi = require('./confi'); // comment this out when deploying to heroku
+// const confi = require('./confi'); // comment this out when deploying to heroku, this will only work on localhost
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
