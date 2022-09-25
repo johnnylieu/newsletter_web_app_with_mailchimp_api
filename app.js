@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const request = require('request');
 const https = require('https');
-// const confi = require('./confi'); // comment this out when deploying to heroku
+const confi = require('./confi'); // comment this out when deploying to heroku
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -31,10 +31,10 @@ app.post('/', function(req, res){
     };
 
     const jsonData = JSON.stringify(data);
-    const url = `https://us12.api.mailchimp.com/3.0/lists/${api2}`;
+    const url = `https://us12.api.mailchimp.com/3.0/lists/${process.env.api2 || api2}`;
     const options = {
         method: 'POST',
-        auth: `JohnnyProfits:${api}`,
+        auth: `JohnnyProfits:${process.env.api || api}`,
     }
 
     const request = https.request(url, options, function(response){
